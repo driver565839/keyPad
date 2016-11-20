@@ -35,7 +35,7 @@ def readcode():
         if(end-start > 5):  #Timeout if more than a minute elapses
             break
 
-        while kp.getKey() != NONE: #Wait until the key is released
+        while kp.getKey() != None: #Wait until the key is released
             a=0
     return 'Error: Timeout'
 
@@ -72,8 +72,9 @@ attempt = '0000'
 iiii = 0
 while iiii==0:
     iiii+=1
-    checkKeypad = kp.getKey()#Read in the keyvalue
-    checkKeypad = '*'
+    checkpad = kp.getKey()
+    while (checkpad) == None:
+        checkpad = kp.getKey()
     #print(checkKeypad)
     if checkKeypad == '*':#If its the start key
         print("Star Pressed")
