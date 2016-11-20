@@ -108,7 +108,8 @@ while True:
     #print("Good?: ",good)
     if(attempt == 'exit'):
         continue
-        
+    while kp.getKey() != None: #Wait until the key is released
+        pass
     if good == 1:  #If the code is good
         print("Phase two good")
         #Do the second check.
