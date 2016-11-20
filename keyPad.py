@@ -8,10 +8,27 @@ import requests
 import numpy
 from twilio.rest import TwilioRestClient
 from matrix_keypad import RPi_GPIO
-
+########################################################################3
+#Function Junction
 def timeout():
     print("TIMED OUT OH NO")
+    
+    
+def openDoor():
+    wiringpi.pwmWrite(18, 150)  #Open the door
+    print("OPEN DOOR")
+    time.sleep(5)
+    print("CLOSE DOOR")
+    wiringpi.pwmWrite(18, 90)  #Close the door
 
+    
+def badPin():
+    print("Phase two bad")
+    
+def badVerify():
+    print("VERY BAD")
+    
+    
 def readcode():
     #Reads in numbers until the pound is pressed. Star resets
     attempt = ''
@@ -64,6 +81,8 @@ def readcode():
             break
     
     return 'timeout'
+##########################################################################################
+#Initialize all the things:
 
 # use 'GPIO naming'
 wiringpi.wiringPiSetupGpio()
@@ -92,10 +111,10 @@ with open('settings.txt') as f:
         lst.append(line.strip().split(','))
 
 
-url = 'https://api.twilio.com/2010-04-01/Accounts/AC123456abc/Messages'
 kp = RPi_GPIO.keypad(columnCount = 4)
 attempt = '0000'
-
+##########################################################################################
+#MAIN LOOP:
 while True:
     print("Phase One")
     attempt = readcode()  #Run the function to read in the keys
@@ -124,14 +143,13 @@ while True:
         attempt = readcode()
         #checkKeypad = '*'
         if attempt == newcode:  #If the code is good
-            wiringpi.pwmWrite(18, 150)  #Open the door
-            print("OPEN DOOR")
-            time.sleep(5)
-            print("CLOSE DOOR")
-            wiringpi.pwmWrite(18, 90)  #Close the door
+            openDoor()
+        else:
+            badVerify()
     
     else:
-        print("Phase two bad")
+        badPin()
+        
         readcode()
     
 
