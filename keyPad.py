@@ -106,7 +106,7 @@ while True:
     #print("Good?: ",good)
     if(attempt == 'exit'):
         continue
-    if(attemp == 'timeout'):
+    if(attempt == 'timeout'):
         timeout()
     while kp.getKey() != None: #Wait until the key is released
         pass
