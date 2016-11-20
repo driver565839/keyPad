@@ -9,6 +9,8 @@ import numpy
 from twilio.rest import TwilioRestClient
 from matrix_keypad import RPi_GPIO
 
+def timeout():
+    print("TIMED OUT OH NO")
 
 def readcode():
     #Reads in numbers until the pound is pressed. Star resets
@@ -58,7 +60,8 @@ def readcode():
                 break
         if(brk == 1):
             break
-    return 'exit'
+    
+    return 'timeout'
 
 # use 'GPIO naming'
 wiringpi.wiringPiSetupGpio()
@@ -103,6 +106,8 @@ while True:
     #print("Good?: ",good)
     if(attempt == 'exit'):
         continue
+    if(attemp == 'timeout'):
+        timeout()
     while kp.getKey() != None: #Wait until the key is released
         pass
     if good == 1:  #If the code is good
