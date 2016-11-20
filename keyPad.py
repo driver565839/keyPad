@@ -17,6 +17,7 @@ def readcode():
     exit = 0
     brk = 0
     start = time.time()  #Start the timer
+    timeout = 30
     while True:  #Loop until pound sign or 60 seconds
         #return '1869'
         key = kp.getKey()
@@ -24,7 +25,7 @@ def readcode():
         while (key) == None:
             key = kp.getKey()
             end = time.time()  #End the timer
-            if(end-start > 60):  #Timeout if more than a minute elapses
+            if(end-start > timeout):  #Timeout if more than a minute elapses
                 brk = 1
                 break
                 
@@ -52,12 +53,12 @@ def readcode():
 
         while kp.getKey() != None: #Wait until the key is released
             end = time.time()  #End the timer
-            if(end-start > 60):  #Timeout if more than a minute elapses
+            if(end-start > timeout):  #Timeout if more than a minute elapses
                 brk = 1
                 break
         if(brk == 1):
             break
-    return 'Error: Timeout'
+    return 'exit'
 
 # use 'GPIO naming'
 wiringpi.wiringPiSetupGpio()
