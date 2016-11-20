@@ -55,7 +55,7 @@ def readcode():
             if(end-start > 60):  #Timeout if more than a minute elapses
                 brk = 1
                 break
-        if(brk == 1)
+        if(brk == 1):
             break
     return 'Error: Timeout'
 
@@ -105,7 +105,7 @@ while True:
             good = 1
             break
     #print("Good?: ",good)
-    if(attempt == 'exit')
+    if(attempt == 'exit'):
         continue
         
     if good == 1:  #If the code is good
