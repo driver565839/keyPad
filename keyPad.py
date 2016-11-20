@@ -46,6 +46,8 @@ def readcode():
             start = time.time()
         elif key == '#':  #Return the final number
             print("attempt:",attempt)
+            while kp.getKey() != None: #Wait until the key is released
+                pass
             return attempt
         else:
             exit = 0
@@ -108,6 +110,7 @@ while True:
         continue
     if(attempt == 'timeout'):
         timeout()
+        continue
     while kp.getKey() != None: #Wait until the key is released
         pass
     if good == 1:  #If the code is good
