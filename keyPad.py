@@ -93,13 +93,7 @@ attempt = '0000'
 
 while True:
     print("Phase One")
-    checkKeypad = kp.getKey()
-    while (checkKeypad) != '*':
-        checkKeypad = kp.getKey()
-    #print(checkKeypad)
-    if checkKeypad == '*':    #If its the start key
-        print("Star Pressed")
-        attempt = readcode()  #Run the function to read in the keys
+    attempt = readcode()  #Run the function to read in the keys
     good = 0
     #print("attempt: ", attempt)
     for i in range(len(lst)):  #Loop through to see if the passcode matches anyones
@@ -118,7 +112,7 @@ while True:
         newcode =  str(int(9999*random.random()))     
         print("newcode",newcode)
         message = client.messages.create(to=lst[i][0], from_="+14128524518",body=newcode)
-        print("HERE2")
+        #print("HERE2")
         attempt = readcode()
         #checkKeypad = '*'
         if attempt == newcode:  #If the code is good
