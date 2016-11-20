@@ -34,6 +34,15 @@ def badPin():
 def badVerify():
     print("VERY BAD")
     
+def badEither():
+    RPi.GPIO.output(20,False)
+    for i in range(5):
+        RPi.GPIO.output(17,True)
+        time.sleep(.1)
+        RPi.GPIO.output(17,False)
+        time.sleep(.1)
+    RPi.GPIO.output(17,True)
+    
     
 def readcode():
     #Reads in numbers until the pound is pressed. Star resets
@@ -155,11 +164,12 @@ while True:
             openDoor()
         else:
             badVerify()
+            badEither()
     
     else:
         badPin()
-        
         readcode()
+        badEither()
     
 RPi.GPIO.output(17,False)
-RPi.GPIO.cleanup()  #THis needs to be run last
+RPi.GPIO.cleanup()  #This needs to be run last
