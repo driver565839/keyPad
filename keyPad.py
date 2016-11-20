@@ -91,6 +91,7 @@ kp = RPi_GPIO.keypad(columnCount = 4)
 attempt = '0000'
 
 while True:
+    print("Phase One")
     checkKeypad = kp.getKey()
     while (checkKeypad) != '*':
         checkKeypad = kp.getKey()
@@ -109,6 +110,7 @@ while True:
         continue
         
     if good == 1:  #If the code is good
+        print("Phase two good")
         #Do the second check.
         #Text code in
         newcode =  str(int(9999*random.random()))     
@@ -125,6 +127,7 @@ while True:
             wiringpi.pwmWrite(18, 90)  #Close the door
     
     else:
+        print("Phase two bad")
         readcode()
     
 
