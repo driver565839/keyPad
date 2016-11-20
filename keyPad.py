@@ -32,7 +32,7 @@ def readcode():
             attempt += key  #Add the key press to the code
 
         end = time.time()  #End the timer
-        if(end-start > 5):  #Timeout if more than a minute elapses
+        if(end-start > 60):  #Timeout if more than a minute elapses
             break
 
         while kp.getKey() != None: #Wait until the key is released
@@ -69,9 +69,8 @@ with open('settings.txt') as f:
 url = 'https://api.twilio.com/2010-04-01/Accounts/AC123456abc/Messages'
 kp = RPi_GPIO.keypad(columnCount = 4)
 attempt = '0000'
-iiii = 0
-while iiii==0:
-    iiii+=1
+
+while True:
     checkKeypad = kp.getKey()
     while (checkKeypad) == None:
         checkKeypad = kp.getKey()
