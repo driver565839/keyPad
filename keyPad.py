@@ -23,19 +23,19 @@ def readcode():
         #key = kp.getKey()
         #Get the key pressed
         print("Key pressed:", key,attempt)
-        
-        if key == '*':#Reset
+        key = str(key)
+        if key == '*':  #Reset
             attempt = ''
-        elif key == '#':#Return the final number
+        elif key == '#':  #Return the final number
             return attempt
         else:
-            attempt += key#Add the key press to the code
+            attempt += key  #Add the key press to the code
 
-        end = time.time()#End the timer
-        if(end-start > 5):#Timeout if more than a minute elapses
+        end = time.time()  #End the timer
+        if(end-start > 5):  #Timeout if more than a minute elapses
             break
 
-        while kp.getKey() != NONE:#Wait until the key is released
+        while kp.getKey() != NONE: #Wait until the key is released
             a=0
     return 'Error: Timeout'
 
