@@ -62,7 +62,7 @@ with open('settings.txt') as f:
 
 
 url = 'https://api.twilio.com/2010-04-01/Accounts/AC123456abc/Messages'
-kp = RPi_GPIO.keypad(ColumnCount = 4)
+kp = RPi_GPIO.keypad(columnCount = 4)
 attempt = '0000'
 iiii = 0
 while iiii==0:
