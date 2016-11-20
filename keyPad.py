@@ -37,10 +37,10 @@ def badVerify():
 def badEither():
     RPi.GPIO.output(20,False)
     for i in range(5):
-        RPi.GPIO.output(17,True)
-        time.sleep(.1)
         RPi.GPIO.output(17,False)
-        time.sleep(.1)
+        time.sleep(.15)
+        RPi.GPIO.output(17,True)
+        time.sleep(.3)
     RPi.GPIO.output(17,True)
     
     
