@@ -17,8 +17,10 @@ def readcode():
     start = time.time()#Start the timer
     while True:#Loop until pound sign or 60 seconds
         #return '1869'
-        while (key = kp.getKey()) == NONE:
-            pass
+        key = kp.getKey()
+        while (key) == NONE:
+            key = kp.getKey()
+        #key = kp.getKey()
         #Get the key pressed
         #print("Key pressed:", key,attempt)
         
