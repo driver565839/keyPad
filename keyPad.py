@@ -6,10 +6,14 @@ import random
 import time
 import requests
 import numpy
+import os
 from twilio.rest import TwilioRestClient
 from matrix_keypad import RPi_GPIO
 ########################################################################3
 #Function Junction
+
+os.chdir('/home/pi/gabe/keypad/')
+
 def timeout():
     print("TIMED OUT OH NO")
     
