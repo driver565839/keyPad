@@ -14,8 +14,8 @@ def readcode():
     #Reads in numbers until the pound is pressed. Star resets
     attempt = ''
     i = 0
-    start = time.time()#Start the timer
-    while True:#Loop until pound sign or 60 seconds
+    start = time.time()  #Start the timer
+    while True:  #Loop until pound sign or 60 seconds
         #return '1869'
         key = kp.getKey()
         while (key) == None:
@@ -53,7 +53,7 @@ wiringpi.pwmSetRange(2000)
 RPi.GPIO.setmode (RPi.GPIO.BCM)
 
 RPi.GPIO.setup(2, RPi.GPIO.IN, pull_up_down=RPi.GPIO.PUD_UP)
-wiringpi.pwmWrite(18, 90)#Close the door
+wiringpi.pwmWrite(18, 90)  #Close the door
 account_sid = "ACbdbc6719e395ca314cafbb74a38f9441"
 auth_token = "75e5b8e3f4b7c5e56d2937eed007116a"
 client = TwilioRestClient(account_sid, auth_token)
@@ -72,21 +72,21 @@ attempt = '0000'
 iiii = 0
 while iiii==0:
     iiii+=1
-    checkpad = kp.getKey()
-    while (checkpad) == None:
-        checkpad = kp.getKey()
+    checkKeypad = kp.getKey()
+    while (checkKeypad) == None:
+        checkKeypad = kp.getKey()
     #print(checkKeypad)
-    if checkKeypad == '*':#If its the start key
+    if checkKeypad == '*':    #If its the start key
         print("Star Pressed")
-        attempt = readcode()#Run the function to read in the keys
+        attempt = readcode()  #Run the function to read in the keys
     good = 0
     print("attempt: ", attempt)
-    for i in range(len(lst)):#Loop through to see if the passcode matches anyones
+    for i in range(len(lst)):  #Loop through to see if the passcode matches anyones
         if(attempt == lst[i][1]):
             good = 1
             break
     #print("Good?: ",good)
-    if good == 1:#If the code is good
+    if good == 1:  #If the code is good
         #Do the second check.
         #Text code in
         newcode =  str(int(9999*random.random()))     
@@ -94,19 +94,19 @@ while iiii==0:
         print("HERE")
         message = client.messages.create(to=lst[i][0], from_="+14128524518",body=newcode)
         print("HERE2")
-        checkKeypad = kp.getKey()#Read in the keyvalue
+        checkKeypad = kp.getKey()  #Read in the keyvalue
         #checkKeypad = '*'
-        if checkKeypad == "*":#If its the start key
+        if checkKeypad == "*":  #If its the start key
             #print("SECOND STAR")
-            attempt = readcode()#Run the function to read in the keys
-        if attempt == newcode:#If the code is good
-            wiringpi.pwmWrite(18, 150)#Open the door
+            attempt = readcode()  #Run the function to read in the keys
+        if attempt == newcode:  #If the code is good
+            wiringpi.pwmWrite(18, 150)  #Open the door
             #print("OPEN DOOR")
             time.sleep(5)
             #print("CLOSE DOOR")
-            wiringpi.pwmWrite(18, 90)#Close the door
+            wiringpi.pwmWrite(18, 90)  #Close the door
 
 
     
 
-RPi.GPIO.cleanup()#THis needs to be run last
+RPi.GPIO.cleanup()  #THis needs to be run last
