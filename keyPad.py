@@ -121,7 +121,7 @@ kp = RPi_GPIO.keypad(columnCount = 4)
 attempt = '0000'
 ##########################################################################################
 #MAIN LOOP:
-RPi.GPIO(17,True)
+RPi.GPIO.output(17,True)
 while True:
     print("Phase One")
     attempt = readcode()  #Run the function to read in the keys
