@@ -28,7 +28,7 @@ def readcode():
                 brk = 1
                 break
                 
-        if(brk == 1)
+        if(brk == 1):
             break
             
         #key = kp.getKey()
