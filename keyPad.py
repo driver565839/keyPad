@@ -14,16 +14,22 @@ def timeout():
     print("TIMED OUT OH NO")
     
     
+    
 def openDoor():
     wiringpi.pwmWrite(18, 150)  #Open the door
+    RPi.GPIO.output(20,True)
+    RPi.GPIO.output(17,False)
     print("OPEN DOOR")
     time.sleep(5)
     print("CLOSE DOOR")
     wiringpi.pwmWrite(18, 90)  #Close the door
+    RPi.GPIO.output(20,False)
+    RPi.GPIO.output(17,True)
 
     
 def badPin():
     print("Phase two bad")
+    
     
 def badVerify():
     print("VERY BAD")
@@ -115,6 +121,7 @@ kp = RPi_GPIO.keypad(columnCount = 4)
 attempt = '0000'
 ##########################################################################################
 #MAIN LOOP:
+RPi.GPIO(17,True)
 while True:
     print("Phase One")
     attempt = readcode()  #Run the function to read in the keys
@@ -152,5 +159,5 @@ while True:
         
         readcode()
     
-
+RPi.GPIO.output(17,False)
 RPi.GPIO.cleanup()  #THis needs to be run last
