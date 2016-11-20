@@ -115,8 +115,8 @@ while True:
         print("newcode",newcode)
         message = client.messages.create(to=lst[i][0], from_="+14128524518",body=newcode)
         print("HERE2")
-            attempt = readcode()
-            #checkKeypad = '*'
+        attempt = readcode()
+        #checkKeypad = '*'
         if attempt == newcode:  #If the code is good
             wiringpi.pwmWrite(18, 150)  #Open the door
             print("OPEN DOOR")
