@@ -116,7 +116,6 @@ wiringpi.pwmSetRange(2000)
 
 RPi.GPIO.setmode (RPi.GPIO.BCM)
 
-RPi.GPIO.setup(2, RPi.GPIO.IN, pull_up_down=RPi.GPIO.PUD_UP)
 RPi.GPIO.setup(17, RPi.GPIO.OUT)
 RPi.GPIO.setup(20, RPi.GPIO.OUT)
 wiringpi.pwmWrite(18, 90)  #Close the door
